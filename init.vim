@@ -112,8 +112,6 @@ set wrap
 set textwidth=110 "80-width lines is for 1995"
 let &wrapmargin=&textwidth
 set formatoptions=qrn1
-set nu
-set ic
 " }}}
 " copy {{{
 " pbcopy
@@ -211,17 +209,17 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 
 " Add diagnostic info for https://github.com/itchyny/lightline.vim {{{
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status'
-      \ },
-      \ }
-"
+" let g:lightline = {
+"       \ 'colorscheme': 'wombat',
+"       \ 'active': {
+"       \   'left': [ [ 'mode', 'paste' ],
+"       \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+"       \ },
+"       \ 'component_function': {
+"       \   'cocstatus': 'coc#status'
+"       \ },
+"       \ }
+" "
 " }}}
 
 " Shortcuts for denite interface
@@ -251,8 +249,28 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>/ :Ack!<Space>
 nnoremap <leader>m :TagbarToggle<CR>
 nnoremap <leader>c :Bclose<CR>
-nnoremap <leader>z :new<CR>:terminal bash --rcfile ~/.bash_profile<CR>i<CR>
-" }}}
+
+
+autocmd BufWinEnter,WinEnter term://* startinsert
+autocmd BufLeave term://* stopinsert
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+" nnoremap <leader>z :new<CR>:terminal bash --rcfile ~/.bash_profile<CR>
+nnoremap <silent> <leader>z :sp term://bash --rcfile ~/.bash_profile<CR>
+"
+if has('nvim')
+  augroup vimrc_term
+    autocmd!
+    autocmd WinEnter term://* nohlsearch
+    autocmd WinEnter term://* startinsert
+
+    autocmd TermOpen * tnoremap <buffer> <C-h> <C-\><C-n><C-w>h
+    autocmd TermOpen * tnoremap <buffer> <C-j> <C-\><C-n><C-w>j
+    autocmd TermOpen * tnoremap <buffer> <C-k> <C-\><C-n><C-w>k
+    autocmd TermOpen * tnoremap <buffer> <C-l> <C-\><C-n><C-w>l
+    autocmd TermOpen * tnoremap <buffer> <Esc> <C-\><C-n>
+  augroup END
+endif
+
 " Nerdtree {{{
 map <leader>n :NERDTreeToggle<cr>
 " }}}
