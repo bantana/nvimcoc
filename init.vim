@@ -251,6 +251,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>/ :Ack!<Space>
 nnoremap <leader>m :TagbarToggle<CR>
 nnoremap <leader>c :Bclose<CR>
+nnoremap <leader>z :new<CR>:terminal bash --rcfile ~/.bash_profile<CR>i<CR>
 " }}}
 " Nerdtree {{{
 map <leader>n :NERDTreeToggle<cr>
