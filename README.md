@@ -23,6 +23,12 @@ nvim +GoInstallBinaries main.go
 
 ### golang
 
+install go-langserver
+
+```bash
+go get -u -v github.com/sourcegraph/go-langserver
+```
+
 vi ~/.config/nvim/coc-settings.json
 
 ```json
@@ -69,6 +75,11 @@ install dart sdk
 brew tap dart-lang/dart
 brew install dart
 brew upgrade dart
+```
+
+install dart_language_server
+
+```bash
 pub global activate dart_language_server
 
 ```
@@ -91,5 +102,26 @@ vi ~/.config/nvim/coc-settings.json
   },
 }
 
+```
+
+### Dockerfile
+
+install dockerfile-language-server-nodejs
+
+```bash
+dockerfile-language-server-nodejs
+
+```
+
+~/.config/nvim/coc-settings.json
+
+```json
+"languageserver": {
+  "dockerfile": {
+    "command": "docker-langserver",
+    "filetypes": ["dockerfile"],
+    "args": ["--stdio"]
+  }
+}
 ```
 
