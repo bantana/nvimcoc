@@ -61,6 +61,7 @@ Plug 'majutsushi/tagbar'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 Plug 'francoiscabrol/ranger.vim'
+Plug 'fatih/vim-go', { 'for': 'go' }
 call plug#end()
 
 " Color Scheme {{{
@@ -392,3 +393,42 @@ let g:mundo_tree_statusline = "mundo"
 let g:mundo_preview_statusline = "mundo preview"
 " }}}
 
+" vim-go ----------------------------------- {{{
+let g:go_auto_type_info=1
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
+let g:go_goimports_bin = "goimports -tabs=false -tabwidth=4"
+let g:go_fmt_fail_silently = 1
+let g:go_fmt_experimental = 1
+let g:go_doc_keywordprg_enabled = 1
+" let g:go_bin_path = expand("~/bin")
+let g:go_bin_path = $HOME."/bin"
+let g:go_highlight_array_whitespace_error = 1
+let g:go_highlight_chan_whitespace_error = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_space_tab_error = 1
+let g:go_highlight_trailing_whitespace_error = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_build_constraints = 1
+let g:go_snippet_engine = "ultisnips"
+let g:go_gocode_propose_source=0
+
+let g:go_metalinter_autosave = 1
+"let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+"let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+" shortkey
+" au FileType go nmap <Leader>s <Plug>(go-implements)
+
+set invsplitbelow
+let g:go_term_mode = "split"
+let g:go_term_enabled = 1
+"let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_go_checkers = ['gometalinter']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_list_type = "quickfix"
+nnoremap <leader>es :vsplit ~/.config/nvim/plugged/vim-snippets/snippets/
+
+" }}}.

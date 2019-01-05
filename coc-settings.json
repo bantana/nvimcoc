@@ -2,7 +2,38 @@
   "javascript.suggestionActions.enabled": false,
   "coc.preferences.colorSupport": false,
 
-  /* "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown"], */
-
-  "prettier.singleQuote": true
+  "languageserver": {
+    /* "dart": { */
+    /*   "command": "dart_language_server", */
+    /*   "args": [], */
+    /*   "filetypes": ["dart"], */
+    /*   "initializationOptions": {}, */
+    /*   "settings": { */
+    /*     "dart": { */
+    /*       "validation": {}, */
+    /*       "completion": {} */
+    /*     } */
+    /*   } */
+    /* }, */
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    },
+    "golang": {
+      "command": "go-langserver",
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "gocodeCompletionEnabled": true,
+        "diagnosticsEnabled": true,
+        "lintTool": "golint"
+      }
+    },
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    }
+  }
 }
