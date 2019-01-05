@@ -1,0 +1,8 @@
+{
+  "javascript.suggestionActions.enabled": false,
+  "coc.preferences.colorSupport": false,
+
+  /* "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown"], */
+
+  "prettier.singleQuote": true
+}
