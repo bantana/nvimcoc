@@ -354,6 +354,7 @@ nnoremap <C-H> <C-W><C-H>
 " }}}
 " Command for fzf {{{
 nnoremap <C-p> :<C-u>FZF<CR>
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 " }}}
 " Command for shortkey {{{
 inoremap jj <ESC>
