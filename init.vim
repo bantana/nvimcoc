@@ -62,6 +62,7 @@ Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'dart-lang/dart-vim-plugin'
 call plug#end()
 
 " Color Scheme {{{
@@ -452,3 +453,7 @@ let g:go_list_type = "quickfix"
 nnoremap <leader>es :vsplit ~/.config/nvim/plugged/vim-snippets/snippets/
 
 " }}}.
+" Dart-vim-plugin {{{
+" let dart_format_on_save = 1
+" }}}
+
