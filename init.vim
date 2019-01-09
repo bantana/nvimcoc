@@ -42,8 +42,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'simnalamburt/vim-mundo'
 Plug 'thinca/vim-quickrun'
-Plug 'liuchengxu/eleline.vim'
-" Plug 'itchyny/lightline.vim'
+" Plug 'liuchengxu/eleline.vim'
+Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -76,7 +76,6 @@ colorscheme gruvbox
 " basic {{{
 set nocompatible
 syntax enable
-syn on
 filetype plugin indent on
 set mouse=a
 set showcmd
@@ -118,7 +117,9 @@ set formatoptions=qrn1
 " pbcopy
 set clipboard=unnamed
 " }}}
-
+" python3 {{{
+let g:python3_host_prog="/usr/local/bin/python3"
+" }}}
 " if hidden not set, TextEdit might fail.
 set hidden
 
@@ -221,6 +222,16 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 "       \ },
 "       \ }
 " "
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 " }}}
 
 " Shortcuts for denite interface
