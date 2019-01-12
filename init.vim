@@ -379,7 +379,7 @@ inoremap jj <ESC>
 " }}}
 " snippets for shortkey {{{
 " nnoremap <leader>es :vsplit ~/.config/nvim/plugged/vim-snippets/snippets/
-let g:UltiSnipsSnippetsDir="~/.config/nvim/ultisnips/"
+let g:UltiSnipsSnippetsDir="~/.config/nvim/ultiSnips/"
 nnoremap <leader>es :UltiSnipsEdit<CR>
 " }}}
 " cocquickfixChange {{{
