@@ -378,7 +378,9 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 inoremap jj <ESC>
 " }}}
 " snippets for shortkey {{{
-nnoremap <leader>es :vsplit ~/.config/nvim/plugged/vim-snippets/snippets/
+" nnoremap <leader>es :vsplit ~/.config/nvim/plugged/vim-snippets/snippets/
+let g:UltiSnipsSnippetsDir="~/.config/nvim/ultisnips/"
+nnoremap <leader>es :UltiSnipsEdit<CR>
 " }}}
 " cocquickfixChange {{{
 let g:coc_auto_copen = 0
@@ -503,3 +505,4 @@ let g:user_emmet_settings = {
   \  },
   \}
 " }}}
+
