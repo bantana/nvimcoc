@@ -56,6 +56,7 @@ Plug 'prettier/vim-prettier',{
 
 
 Plug 'posva/vim-vue'
+Plug 'albanm/vuetify-vim'
 Plug 'travisjeffery/vim-auto-mkdir'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/webapi-vim'
@@ -194,6 +195,11 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
+augroup golang
+  " this one is which you're most likely to use?
+  autocmd FileType go nnoremap <buffer> <leader>gi :GoImport 
+augroup end
+
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 vmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
@@ -295,7 +301,7 @@ let g:ranger_replace_netrw = 1 "// open ranger when vim open a directory
 let g:ale_sign_column_always=1
 let g:ale_fixers = {'javascript': ['prettier_standard']}
 let g:ale_fixers = {'css': ['prettier']}
-let g:ale_linters = {'javascript': ['']}
+let g:ale_linters = {'javascript': [''],'go': ['gometalinter']}
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_standard_use_global=1
 
@@ -371,6 +377,9 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 " Command for shortkey {{{
 inoremap jj <ESC>
 " }}}
+" snippets for shortkey {{{
+nnoremap <leader>es :vsplit ~/.config/nvim/plugged/vim-snippets/snippets/
+" }}}
 " cocquickfixChange {{{
 let g:coc_auto_copen = 0
 autocmd User CocQuickfixChange :Denite -mode=normal quickfix
@@ -392,9 +401,9 @@ command! JestInit :call CocAction('runCommand', 'jest.init')
 " emmet {{{
 augroup EmmetSettings
   autocmd! FileType html imap <tab> <plug>(emmet-expand-abbr)
+  autocmd! FileType html let g:user_emmet_expandabbr_key = '<Tab>'
+  autocmd! FileType html imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 augroup END
-let g:user_emmet_expandabbr_key = '<Tab>'
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 " }}}
 
 "sudo after opening:
@@ -457,14 +466,40 @@ let g:go_metalinter_autosave = 1
 set invsplitbelow
 let g:go_term_mode = "split"
 let g:go_term_enabled = 1
-"let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_go_checkers = ['gometalinter']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_list_type = "quickfix"
-nnoremap <leader>es :vsplit ~/.config/nvim/plugged/vim-snippets/snippets/
 
 " }}}.
 " Dart-vim-plugin {{{
 " let dart_format_on_save = 1
 " }}}
 
+" typescript ctags {{{
+let g:tagbar_type_typescript = {
+  \ 'ctagstype': 'typescript',
+  \ 'kinds': [
+    \ 'c:classes',
+    \ 'n:modules',
+    \ 'f:functions',
+    \ 'v:variables',
+    \ 'v:varlambdas',
+    \ 'm:members',
+    \ 'i:interfaces',
+    \ 'e:enums',
+  \ ]
+  \ }
+" }}}
+" UltiSnips {{{
+let g:tagbar_type_snippets = {
+    \ 'ctagstype' : 'snippets',
+    \ 'kinds' : [
+        \ 's:snippets',
+    \ ]
+    \ }
+" }}}
+" chineses dummy text emmet {{{
+let g:user_emmet_settings = {
+  \  'custom_expands1' : {
+  \    '^\%(lorem\|lipsum\)\(\d*\)$' : function('emmet#lorem#ja#expand'),
+  \  },
+  \}
+" }}}
