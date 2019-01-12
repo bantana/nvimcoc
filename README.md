@@ -109,7 +109,7 @@ vi ~/.config/nvim/coc-settings.json
 install dockerfile-language-server-nodejs
 
 ```bash
-dockerfile-language-server-nodejs
+yarn global add dockerfile-language-server-nodejs
 
 ```
 
@@ -125,3 +125,8 @@ dockerfile-language-server-nodejs
 }
 ```
 
+### typescript
+
+```bash
+yarn global add javascript-typescript-langserver
+```
