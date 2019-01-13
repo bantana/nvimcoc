@@ -37,6 +37,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'scrooloose/nerdtree'
 " Plug 'tpope/vim-unimpaired'
+Plug 'ntpeters/vim-better-whitespace'
 " Plug 'gagoar/StripWhiteSpaces'
 Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
@@ -64,6 +65,7 @@ Plug 'mattn/gist-vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'bantana/vim-article'
 call plug#end()
 
 " Color Scheme {{{
@@ -118,7 +120,8 @@ set formatoptions=qrn1
 " pbcopy
 set clipboard=unnamed
 " }}}
-" python3 {{{
+" python {{{
+let g:python_host_prog="/usr/local/bin/python"
 let g:python3_host_prog="/usr/local/bin/python3"
 " }}}
 " if hidden not set, TextEdit might fail.
@@ -197,7 +200,7 @@ augroup end
 
 augroup golang
   " this one is which you're most likely to use?
-  autocmd FileType go nnoremap <buffer> <leader>gi :GoImport 
+  autocmd FileType go nnoremap <buffer> <leader>gi :GoImport
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
@@ -266,7 +269,7 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>/ :Ack!<Space>
 nnoremap <leader>m :TagbarToggle<CR>
-nnoremap <leader>c :Bclose<CR>
+" nnoremap <leader>c :Bclose<CR>
 
 
 autocmd BufWinEnter,WinEnter term://* startinsert
@@ -379,7 +382,7 @@ inoremap jj <ESC>
 " }}}
 " snippets for shortkey {{{
 " nnoremap <leader>es :vsplit ~/.config/nvim/plugged/vim-snippets/snippets/
-let g:UltiSnipsSnippetsDir="~/.config/nvim/ultiSnips/"
+let g:UltiSnipsSnippetsDir="~/.config/nvim/ultisnips/"
 nnoremap <leader>es :UltiSnipsEdit<CR>
 " }}}
 " cocquickfixChange {{{
@@ -506,3 +509,10 @@ let g:user_emmet_settings = {
   \}
 " }}}
 
+" test plugin reload {{{
+" nnoremap <leader>l :so ~/.config/nvim/init.vim<CR>
+" }}}
+
+" StripWhiteSpaces {{{
+autocmd FileType article EnableStripWhitespaceOnSave
+" }}}
