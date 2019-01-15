@@ -30,7 +30,7 @@ Plug 'junegunn/fzf',{'dir': '~/.fzf', 'do': './install --all'}
 Plug 'neoclide/jsonc.vim'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
-Plug 'neoclide/npm.nvim', {'do' : 'npm install'}
+" Plug 'neoclide/npm.nvim', {'do' : 'npm install'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'terryma/vim-multiple-cursors'
@@ -269,7 +269,7 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>/ :Ack!<Space>
 nnoremap <leader>m :TagbarToggle<CR>
-" nnoremap <leader>c :Bclose<CR>
+nnoremap <leader>q :Bclose<CR>
 
 
 autocmd BufWinEnter,WinEnter term://* startinsert
@@ -355,11 +355,18 @@ let g:prettier#config#config_precedence = 'prefer-file'
 " always|never|preserve
 let g:prettier#config#prose_wrap = 'preserve'
 
-" let g:prettier#autoformat = 0
+let g:prettier#autoformat = 0
 let g:prettier#autoformat = 1
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html CocCommand prettier.formatFile
+
+  " when running at every change you may want to disable quickfix
+" let g:prettier#quickfix_enabled = 0
+" let g:prettier#autoformat = 1
+" autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html,*.vue :CocCommand prettier.formatFile
+
 " command! -nargs=0 Prettier :CocCommand prettier.formatFile
-command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+" command! -nargs=0 PrettierAsync :call CocAction('runCommand', 'prettier.formatFile')
+" command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 " vim-quickrun {{{
 let g:quickrun_config = {
 \    "_" : {
