@@ -2,6 +2,34 @@
   "javascript.suggestionActions.enabled": false,
   "coc.preferences.colorSupport": false,
 
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.bracketSpacing": true,
+  "prettier.jsxBracketSameLine": false,
+  "prettier.arrowParens": "always",
+
+  //  enable update imports on file move, requires watchman installed, default true.
+  /* "javascript.updateImportsOnFileMove.enable": true, */
+  // enable codeLens for implementations, default true
+  /* "javascript.implementationsCodeLens.enable": true, */
+  // enable codeLens for references, default true
+  /* "javascript.referencesCodeLens.enable": true, */
+  // remove semicolons on format for javascript.
+  /* "javascript.preferences.noSemicolons": false, */
+  // quote style of javascript, could be single or double, default "double"
+  /* "javascript.preferences.quoteStyle": "single", */
+  // enable suggestion actions for javascript, default true
+  // javascript validation, default true
+  /* "javascript.validate.enable": true, */
+  // enable javascript completion, default true
+  /* "javascript.suggest.enabled": true, */
+  // enable suggest paths in import statement and require calls, default true
+  /* "javascript.suggest.paths": true, */
+  // enable suggest for auto import, default true
+  /* "javascript.suggest.autoImports": true, */
+  // enable using snippet for method suggestion
+  /* "javascript.suggest.completeFunctionCalls": true, */
+
   "languageserver": {
     "dart": {
       "command": "dart_language_server",

@@ -193,7 +193,7 @@ nmap <leader>rn <Plug>(coc-rename)
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
@@ -296,15 +296,17 @@ endif
 map <leader>n :NERDTreeToggle<cr>
 " }}}
 " range {{{
-map <leader>f :Ranger<CR>
+" map <leader>f :Ranger<CR>
 let g:NERDTreeHijackNetrw = 0 "// add this line if you use NERDTree
 let g:ranger_replace_netrw = 1 "// open ranger when vim open a directory
 " }}}
 " ale always {{{
 let g:ale_sign_column_always=1
-let g:ale_fixers = {'javascript': ['prettier_standard']}
-let g:ale_fixers = {'css': ['prettier']}
 let g:ale_linters = {'javascript': [''],'go': ['gometalinter']}
+let g:ale_fixers = {'css': ['prettier']}
+" let g:ale_fixers = {'javascript': ['prettier-standard']}
+" let g:ale_fixers = {'javascript': ['prettier']}
+" let g:ale_javascript_prettier_standard_executable = '/usr/local/bin/prettier-standard'
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_standard_use_global=1
 
@@ -327,15 +329,16 @@ let g:prettier#config#semi = 'false'
 
 " single quotes over double quotes
 " Prettier default: false
+" let g:prettier#config#single_quote = 'false'
 let g:prettier#config#single_quote = 'true'
 
 " print spaces between brackets
 " Prettier default: true
-let g:prettier#config#bracket_spacing = 'false'
+let g:prettier#config#bracket_spacing = 'true'
 
 " put > on the last line instead of new line
 " Prettier default: false
-let g:prettier#config#jsx_bracket_same_line = 'true'
+let g:prettier#config#jsx_bracket_same_line = 'false'
 
 " avoid|always
 " Prettier default: avoid
@@ -343,11 +346,13 @@ let g:prettier#config#arrow_parens = 'always'
 
 " none|es5|all
 " Prettier default: none
-let g:prettier#config#trailing_comma = 'all'
+" let g:prettier#config#trailing_comma = 'es5'
+let g:prettier#config#trailing_comma = 'none'
 
 " flow|babylon|typescript|css|less|scss|json|graphql|markdown
 " Prettier default: babylon
-let g:prettier#config#parser = 'flow'
+" let g:prettier#config#parser = 'flow'
+let g:prettier#config#parser = 'babylon'
 
 " cli-override|file-override|prefer-file
 let g:prettier#config#config_precedence = 'prefer-file'
@@ -355,18 +360,18 @@ let g:prettier#config#config_precedence = 'prefer-file'
 " always|never|preserve
 let g:prettier#config#prose_wrap = 'preserve'
 
-let g:prettier#autoformat = 0
+" let g:prettier#config#spaceBeforeFunctionParen = 'true'
+
+" let g:prettier#autoformat = 0
 let g:prettier#autoformat = 1
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html CocCommand prettier.formatFile
-
-  " when running at every change you may want to disable quickfix
-" let g:prettier#quickfix_enabled = 0
-" let g:prettier#autoformat = 1
-" autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html,*.vue :CocCommand prettier.formatFile
-
-" command! -nargs=0 Prettier :CocCommand prettier.formatFile
+"
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 " command! -nargs=0 PrettierAsync :call CocAction('runCommand', 'prettier.formatFile')
-" command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+
+" autocmd BufWritePre *.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+" command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " vim-quickrun {{{
 let g:quickrun_config = {
 \    "_" : {
@@ -521,5 +526,5 @@ let g:user_emmet_settings = {
 " }}}
 
 " StripWhiteSpaces {{{
-autocmd FileType article EnableStripWhitespaceOnSave
+autocmd FileType article,vue EnableStripWhitespaceOnSave
 " }}}
