@@ -28,8 +28,9 @@ Plug 'Shougo/denite.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf',{'dir': '~/.fzf', 'do': './install --all'}
 Plug 'neoclide/jsonc.vim'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
 " Plug 'neoclide/npm.nvim', {'do' : 'npm install'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -51,10 +52,10 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'leafgarland/typescript-vim'
 Plug 'w0rp/ale'
-Plug 'prettier/vim-prettier',{
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'vue', 'yaml', 'html'] }
-
+" Plug 'prettier/vim-prettier',{
+"   \ 'do': 'yarn install',
+"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'vue', 'yaml', 'html'] }
+"
 
 Plug 'posva/vim-vue'
 Plug 'albanm/vuetify-vim'
@@ -302,12 +303,18 @@ let g:ranger_replace_netrw = 1 "// open ranger when vim open a directory
 " }}}
 " ale always {{{
 let g:ale_sign_column_always=1
+let g:ale_linters_explicit = 1
 let g:ale_linters = {'javascript': [''],'go': ['gometalinter']}
-let g:ale_fixers = {'css': ['prettier']}
+let g:ale_fixers = {
+  \ 'html': ['prettier'],
+  \ 'css' : ['stylelint', 'prettier'],
+  \ 'javascript': ['eslint', 'prettier']
+  \ }
+  " \ 'html': ['prettier'],
 " let g:ale_fixers = {'javascript': ['prettier-standard']}
 " let g:ale_fixers = {'javascript': ['prettier']}
 " let g:ale_javascript_prettier_standard_executable = '/usr/local/bin/prettier-standard'
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_javascript_prettier_standard_use_global=1
 
 " max line length that prettier will wrap on
@@ -362,8 +369,8 @@ let g:prettier#config#prose_wrap = 'preserve'
 
 " let g:prettier#config#spaceBeforeFunctionParen = 'true'
 
-" let g:prettier#autoformat = 0
-let g:prettier#autoformat = 1
+let g:prettier#autoformat = 0
+" let g:prettier#autoformat = 1
 "
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 " command! -nargs=0 PrettierAsync :call CocAction('runCommand', 'prettier.formatFile')
