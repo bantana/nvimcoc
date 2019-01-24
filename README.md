@@ -19,6 +19,22 @@ nvim  +"CocInstall coc-vetur coc-snippets coc-stylelint coc-css coc-prettier coc
 nvim +GoInstallBinaries main.go
 ```
 
+## install node
+
+use homebrew
+
+```bash
+brew install node
+```
+
+or install use nvm
+
+```bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+nvm ls-remote
+nvm install v10.15.0
+```
+
 ## coc.nvim
 
 ### golang

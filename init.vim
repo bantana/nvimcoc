@@ -28,9 +28,9 @@ Plug 'Shougo/denite.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf',{'dir': '~/.fzf', 'do': './install --all'}
 Plug 'neoclide/jsonc.vim'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
+" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
 " Plug 'neoclide/npm.nvim', {'do' : 'npm install'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -122,7 +122,7 @@ set formatoptions=qrn1
 set clipboard=unnamed
 " }}}
 " python {{{
-let g:python_host_prog="/usr/local/bin/python"
+" let g:python_host_prog="/usr/local/bin/python"
 let g:python3_host_prog="/usr/local/bin/python3"
 " }}}
 " if hidden not set, TextEdit might fail.
