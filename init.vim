@@ -66,6 +66,9 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'bantana/vim-article'
+
+" brew install languagetool
+Plug 'rhysd/vim-grammarous' 
 call plug#end()
 
 " Color Scheme {{{
@@ -538,7 +541,7 @@ let g:lightline = {
 " }}}
 
 
-" Using CocList
+" Using CocList {{{
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " " Manage extensions
@@ -555,3 +558,20 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" }}}
+
+" languagetool {{{
+let g:grammarous#languagetool_cmd = 'languagetool'
+let g:grammarous#hooks = {}
+function! g:grammarous#hooks.on_check(errs) abort
+    nmap <buffer><C-n> <Plug>(grammarous-move-to-next-error)
+    nmap <buffer><C-p> <Plug>(grammarous-move-to-previous-error)
+endfunction
+let g:grammarous#disabled_categories = {
+            \ '*' : ['PUNCTUATION'],
+            \ 'help' : ['PUNCTUATION', 'TYPOGRAPHY'],
+            \ }
+let g:grammarous#default_comments_only_filetypes = {
+            \ '*' : 1, 'help' : 0, 'markdown' : 0,
+            \ }
+" }}}
