@@ -137,19 +137,19 @@ let maplocalleader = "\\"
 " }}}
 " Shortcuts for denite interface
 " Show extension list
-nnoremap <silent> <space>e  :<C-u>Denite coc-extension<cr>
-" Show symbols of current buffer
-nnoremap <silent> <space>o  :<C-u>Denite coc-symbols<cr>
-" Search symbols of current workspace
-nnoremap <silent> <space>t  :<C-u>Denite coc-workspace<cr>
-" Show diagnostics of current workspace
-nnoremap <silent> <space>a  :<C-u>Denite coc-diagnostic<cr>
-" Show available commands
-nnoremap <silent> <space>c  :<C-u>Denite coc-command<cr>
-" Show available services
-nnoremap <silent> <space>s  :<C-u>Denite coc-service<cr>
-" Show links of current buffer
-nnoremap <silent> <space>l  :<C-u>Denite coc-link<cr>
+" nnoremap <silent> <space>e  :<C-u>Denite coc-extension<cr>
+" " Show symbols of current buffer
+" nnoremap <silent> <space>o  :<C-u>Denite coc-symbols<cr>
+" " Search symbols of current workspace
+" nnoremap <silent> <space>t  :<C-u>Denite coc-workspace<cr>
+" " Show diagnostics of current workspace
+" nnoremap <silent> <space>a  :<C-u>Denite coc-diagnostic<cr>
+" " Show available commands
+" nnoremap <silent> <space>c  :<C-u>Denite coc-command<cr>
+" " Show available services
+" nnoremap <silent> <space>s  :<C-u>Denite coc-service<cr>
+" " Show links of current buffer
+" nnoremap <silent> <space>l  :<C-u>Denite coc-link<cr>
 
 " shutkey {{{
 nnoremap <leader>ev :e ~/.config/nvim/init.vim<CR>
@@ -329,7 +329,8 @@ cmap w!! w !sudo tee >/dev/null %
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 " }}}
-nnoremap <leader>s :ALENextWrap<CR>
+" ALENextWrap replace with :<C-u>CocList diagnostics
+" nnoremap <leader>s :ALENextWrap<CR>
 " ruby support {{{
 let g:ruby_host_prog = "/usr/local/bin/neovim-node-host"
 " }}}
@@ -479,26 +480,26 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" vmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+" vmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -540,17 +541,17 @@ let g:lightline = {
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
+" " Manage extensions
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
+" " Show commands
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
+" " Find symbol of current document
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
+" " Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
+" " Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
+" " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
+" " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
