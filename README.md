@@ -146,3 +146,27 @@ yarn global add dockerfile-language-server-nodejs
 ```bash
 yarn global add javascript-typescript-langserver
 ```
+
+### c, c++, object/c
+
+```bash
+brew tap twlz0ne/homebrew-ccls
+brew install ccls
+```
+
+```json
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "initializationOptions": {
+        "cacheDirectory": "/tmp/ccls"
+      }
+    },
+```
