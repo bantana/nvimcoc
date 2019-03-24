@@ -8,6 +8,8 @@
   "prettier.jsxBracketSameLine": false,
   "prettier.arrowParens": "always",
 
+  "java.format.enabled": true,
+
   //  enable update imports on file move, requires watchman installed, default true.
   /* "javascript.updateImportsOnFileMove.enable": true, */
   // enable codeLens for implementations, default true
@@ -87,5 +89,6 @@
       /* "args": ["-c", "$HOME/.config/efm-langserver/config.yaml"], */
       "filetypes": ["vim", "eruby", "markdown"]
     }
-  }
+  },
+  "java.errors.incompleteClasspath.severity": "ignore"
 }

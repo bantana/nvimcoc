@@ -68,7 +68,10 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'bantana/vim-article'
 
 " brew install languagetool
-Plug 'rhysd/vim-grammarous' 
+Plug 'rhysd/vim-grammarous'
+Plug 'stephenway/postcss.vim'
+Plug 'iloginow/vim-stylus'
+Plug 'lervag/vimtex'
 call plug#end()
 
 " Color Scheme {{{
@@ -191,6 +194,8 @@ map <leader>n :NERDTreeToggle<cr>
 let g:NERDTreeHijackNetrw = 0 "// add this line if you use NERDTree
 let g:ranger_replace_netrw = 1 "// open ranger when vim open a directory
 " }}}
+"
+"
 " ale always {{{
 let g:ale_sign_column_always=1
 let g:ale_linters_explicit = 1
@@ -204,8 +209,11 @@ let g:ale_fixers = {
 " let g:ale_fixers = {'javascript': ['prettier-standard']}
 " let g:ale_fixers = {'javascript': ['prettier']}
 " let g:ale_javascript_prettier_standard_executable = '/usr/local/bin/prettier-standard'
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_standard_use_global=1
+
+let g:ale_java_google_java_format_executable = "/usr/local/bin/google-java-format"
+let g:ale_fixers = { 'java': ['google_java_format']}
 
 " max line length that prettier will wrap on
 " Prettier default: 80
@@ -266,6 +274,7 @@ let g:prettier#autoformat = 0
 " command! -nargs=0 PrettierAsync :call CocAction('runCommand', 'prettier.formatFile')
 
 " autocmd BufWritePre *.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+" autocmd BufWritePre *.java,*.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 " command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -575,4 +584,34 @@ let g:grammarous#default_comments_only_filetypes = {
             \ '*' : 1, 'help' : 0, 'markdown' : 0,
             \ }
 " }}}
-"
+" rivive {{{
+" go get -u -v github.com/mgechev/revive
+call ale#linter#Define('go', {
+\   'name': 'revive',
+\   'output_stream': 'both',
+\   'executable': 'revive',
+\   'read_buffer': 0,
+\   'command': 'revive %t',
+\   'callback': 'ale#handlers#unix#HandleAsWarning',
+\})
+" }}}
+" google-java-format {{{
+" autocmd FileType java AutoFormatBuffer google-java-format
+" }}}
+" css tagbar ctags {{{
+" brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+let g:tagbar_type_css = {
+\ 'ctagstype' : 'Css',
+    \ 'kinds'     : [
+        \ 'c:classes',
+        \ 's:selectors',
+        \ 'i:identities'
+    \ ]
+\ }
+" }}}
+let g:tex_flavor='latex'
+let g:vimtex_view_method='skim'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+let g:Tex_CompileRule_pdf = 'xelatex -interaction=nonstopmode $*'
