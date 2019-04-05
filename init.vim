@@ -30,7 +30,7 @@ Plug 'junegunn/fzf',{'dir': '~/.fzf', 'do': './install --all'}
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
 " Plug 'neoclide/npm.nvim', {'do' : 'npm install'}
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'neoclide/jsonc.vim'
 Plug 'honza/vim-snippets'
 Plug 'terryma/vim-multiple-cursors'
@@ -127,7 +127,7 @@ set formatoptions=qrn1
 set clipboard=unnamed
 " }}}
 " python {{{
-" let g:python_host_prog="/usr/local/bin/python"
+let g:python_host_prog="/usr/local/bin/python"
 let g:python3_host_prog="/usr/local/bin/python3"
 " }}}
 
@@ -300,8 +300,9 @@ inoremap jj <ESC>
 " }}}
 " snippets for shortkey {{{
 " nnoremap <leader>es :vsplit ~/.config/nvim/plugged/vim-snippets/snippets/
-let g:UltiSnipsSnippetsDir="~/.config/nvim/ultisnips/"
-nnoremap <leader>es :UltiSnipsEdit<CR>
+" let g:UltiSnipsSnippetsDir="~/.config/nvim/ultisnips"
+" nnoremap <leader>es :UltiSnipsEdit<CR>
+nnoremap <leader>es :CocCommand snippets.editSnippets<CR>
 " }}}
 " cocquickfixChange {{{
 let g:coc_auto_copen = 0
@@ -344,7 +345,7 @@ let g:ale_sign_warning = '⚠'
 " ALENextWrap replace with :<C-u>CocList diagnostics
 " nnoremap <leader>s :ALENextWrap<CR>
 " ruby support {{{
-let g:ruby_host_prog = "/usr/local/bin/neovim-node-host"
+" let g:ruby_host_prog = ""
 " }}}
 " vim-mundo ------- {{{
 set undofile
@@ -452,16 +453,33 @@ set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? coc#rpc#request('doKeymap', ['snippets-expand-jump','']) :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()

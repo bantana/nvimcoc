@@ -10,6 +10,9 @@
 
   "java.format.enabled": true,
 
+  /* "snippets.ultisnips.enable": true, */
+  /* "snippets.ultisnips.directories": ["~/.config/nvim/ultisnips"], */
+
   //  enable update imports on file move, requires watchman installed, default true.
   /* "javascript.updateImportsOnFileMove.enable": true, */
   // enable codeLens for implementations, default true
@@ -60,6 +63,7 @@
         "cacheDirectory": "/tmp/ccls"
       }
     },
+    // yarn global add dockerfile-language-server-nodejs
     "dockerfile": {
       "command": "docker-langserver",
       "filetypes": ["dockerfile"],
@@ -75,6 +79,7 @@
         "lintTool": "golint"
       }
     },
+    // yarn global add bash-language-server
     "bash": {
       "command": "bash-language-server",
       "args": ["start"],
