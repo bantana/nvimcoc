@@ -71,7 +71,7 @@ Plug 'bantana/vim-article'
 Plug 'rhysd/vim-grammarous'
 Plug 'stephenway/postcss.vim'
 Plug 'iloginow/vim-stylus'
-Plug 'lervag/vimtex'
+" Plug 'lervag/vimtex'
 call plug#end()
 
 " Color Scheme {{{
@@ -609,9 +609,9 @@ let g:tagbar_type_css = {
     \ ]
 \ }
 " }}}
-let g:tex_flavor='latex'
-let g:vimtex_view_method='skim'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
-let g:Tex_CompileRule_pdf = 'xelatex -interaction=nonstopmode $*'
+" let g:tex_flavor='latex'
+" let g:vimtex_view_method='skim'
+" let g:vimtex_quickfix_mode=0
+" set conceallevel=1
+" let g:tex_conceal='abdmg'
+" let g:Tex_CompileRule_pdf = 'xelatex -interaction=nonstopmode $*'

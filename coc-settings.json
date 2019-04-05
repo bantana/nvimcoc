@@ -80,15 +80,15 @@
       "args": ["start"],
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
-    },
-    // go get -u -v github.com/mattn/efm-langserver/cmd/efm-langserver
-    "efm": {
-      "command": "efm-langserver",
-      "args": [],
-      // custom config path
-      /* "args": ["-c", "$HOME/.config/efm-langserver/config.yaml"], */
-      "filetypes": ["vim", "eruby", "markdown"]
     }
+    // go get -u -v github.com/mattn/efm-langserver/cmd/efm-langserver
+    // "efm": {
+    //  "command": "efm-langserver",
+    //  "args": [],
+    //  // custom config path
+    //  /* "args": ["-c", "$HOME/.config/efm-langserver/config.yaml"], */
+    //  "filetypes": ["vim", "eruby", "markdown"]
+    // }
   },
   "java.errors.incompleteClasspath.severity": "ignore"
 }
