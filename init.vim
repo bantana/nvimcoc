@@ -164,7 +164,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>/ :Ack!<Space>
 nnoremap <leader>m :TagbarToggle<CR>
 nnoremap <leader>q :Bclose<CR>
-
+nnoremap <leader>gt :Gist 
 
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
