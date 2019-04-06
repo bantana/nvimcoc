@@ -71,6 +71,7 @@ Plug 'bantana/vim-article'
 Plug 'rhysd/vim-grammarous'
 Plug 'stephenway/postcss.vim'
 Plug 'iloginow/vim-stylus'
+Plug 'liuchengxu/graphviz.vim'
 " Plug 'lervag/vimtex'
 call plug#end()
 
@@ -633,3 +634,19 @@ let g:tagbar_type_css = {
 " set conceallevel=1
 " let g:tex_conceal='abdmg'
 " let g:Tex_CompileRule_pdf = 'xelatex -interaction=nonstopmode $*'
+
+" graphviz {{{
+" How to open the generated output file.
+" If does not exist, graphviz.vim will automatically choose the right way depending on the platform.
+let g:graphviz_viewer = 'open'
+
+" Default output format. Default is 'pdf'.
+let g:graphviz_output_format = 'pdf'
+
+" Options passed on to dot. Default is ''.
+let g:graphviz_shell_option = ''
+augroup graphviz
+  " this one is which you're most likely to use?
+  autocmd FileType dot nnoremap <buffer> <leader>r :Graphviz! pdf
+augroup end
+" }}}
