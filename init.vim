@@ -73,7 +73,7 @@ Plug 'stephenway/postcss.vim'
 Plug 'iloginow/vim-stylus'
 Plug 'liuchengxu/graphviz.vim'
 Plug 'floobits/floobits-neovim'
-" Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', {'for': ['tex', 'plaintex', 'bst']}
 call plug#end()
 
 " Color Scheme {{{
@@ -629,13 +629,31 @@ let g:tagbar_type_css = {
     \ ]
 \ }
 " }}}
-" let g:tex_flavor='latex'
-" let g:vimtex_view_method='skim'
-" let g:vimtex_quickfix_mode=0
-" set conceallevel=1
-" let g:tex_conceal='abdmg'
-" let g:Tex_CompileRule_pdf = 'xelatex -interaction=nonstopmode $*'
+" vimtex {{{
+let g:tex_flavor='latex'
+let g:vimtex_view_method='skim'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+let g:Tex_CompileRule_pdf='xelatex -interaction=nonstopmode $*'
+let g:vimtex_compiler_enabled=1
+let g:vimtex_view_general_options
+    \ = '-reuse-instance -forward-search @tex @line @pdf'
+let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 
+" TOC settings
+let g:vimtex_toc_config = {
+      \ 'name' : 'TOC',
+      \ 'layers' : ['content', 'todo', 'include'],
+      \ 'resize' : 1,
+      \ 'split_width' : 50,
+      \ 'todo_sorted' : 0,
+      \ 'show_help' : 1,
+      \ 'show_numbers' : 1,
+      \ 'mode' : 2,
+      \}
+"
+" }}}
 " graphviz {{{
 " How to open the generated output file.
 " If does not exist, graphviz.vim will automatically choose the right way depending on the platform.
@@ -651,8 +669,8 @@ augroup graphviz
   autocmd FileType dot nnoremap <buffer> <leader>gb :GraphvizCompile<CR> :Graphviz! pdf<CR>
 augroup end
 " }}}
-"+++ Spelling +++
-let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
-set spelllang=en_us
-autocmd BufRead,BufNewFile *.md setlocal spell
-autocmd BufRead,BufNewFile *.txt setlocal spell
+" "+++ Spelling +++
+" let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
+" set spelllang=en_us
+" autocmd BufRead,BufNewFile *.md setlocal spell
+" autocmd BufRead,BufNewFile *.txt setlocal spell
