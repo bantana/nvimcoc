@@ -72,6 +72,7 @@ Plug 'rhysd/vim-grammarous'
 Plug 'stephenway/postcss.vim'
 Plug 'iloginow/vim-stylus'
 Plug 'liuchengxu/graphviz.vim'
+Plug 'floobits/floobits-neovim'
 " Plug 'lervag/vimtex'
 call plug#end()
 
@@ -647,6 +648,11 @@ let g:graphviz_output_format = 'pdf'
 let g:graphviz_shell_option = ''
 augroup graphviz
   " this one is which you're most likely to use?
-  autocmd FileType dot nnoremap <buffer> <leader>r :Graphviz! pdf
+  autocmd FileType dot nnoremap <buffer> <leader>gb :GraphvizCompile<CR> :Graphviz! pdf<CR>
 augroup end
 " }}}
+"+++ Spelling +++
+let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
+set spelllang=en_us
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.txt setlocal spell
