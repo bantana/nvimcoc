@@ -630,6 +630,8 @@ let g:tagbar_type_css = {
 \ }
 " }}}
 " vimtex {{{
+" require: brew cask install mactex skim
+
 let g:tex_flavor='latex'
 let g:vimtex_view_method='skim'
 let g:vimtex_quickfix_mode=0

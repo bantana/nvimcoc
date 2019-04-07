@@ -170,3 +170,63 @@ brew install ccls
       }
     },
 ```
+
+## vimtex mactex skim
+
+latex support
+
+~/.config/nvim/init.nvim
+
+    Plug 'lervag/vimtex', {'for': ['tex', 'plaintex', 'bst']}
+
+```bash
+brew cask install mactex skim
+```
+
+```bash
+if [[ -d /usr/local/texlive/2018/bin/x86_64-darwin ]]; then
+  #statements
+  export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-darwin
+fi
+```
+
+```vimscript
+" vimtex {{{
+" require: brew cask install mactex skim
+let g:tex_flavor='latex'
+let g:vimtex_view_method='skim'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+let g:Tex_CompileRule_pdf='xelatex -interaction=nonstopmode $*'
+let g:vimtex_compiler_enabled=1
+let g:vimtex_view_general_options
+    \ = '-reuse-instance -forward-search @tex @line @pdf'
+let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+
+" TOC settings
+let g:vimtex_toc_config = {
+      \ 'name' : 'TOC',
+      \ 'layers' : ['content', 'todo', 'include'],
+      \ 'resize' : 1,
+      \ 'split_width' : 50,
+      \ 'todo_sorted' : 0,
+      \ 'show_help' : 1,
+      \ 'show_numbers' : 1,
+      \ 'mode' : 2,
+      \}
+"
+" }}}
+```
+
+vim command:
+
+    :vimtexCompile
+
+## floobits.com
+
+plugin:
+
+    Plug 'floobits/floobits-neovim'
+
+visit floobits.com to register a account.
