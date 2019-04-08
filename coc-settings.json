@@ -13,6 +13,7 @@
   /* "snippets.ultisnips.enable": true, */
   /* "snippets.ultisnips.directories": ["~/.config/nvim/ultisnips"], */
 
+  "snippets.ultisnips.directories": ["/Users/huangxw/.config/nvim/ultisnips/"],
   //  enable update imports on file move, requires watchman installed, default true.
   /* "javascript.updateImportsOnFileMove.enable": true, */
   // enable codeLens for implementations, default true
