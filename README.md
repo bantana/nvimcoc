@@ -37,6 +37,12 @@ nvm install v10.15.0
 
 ## coc.nvim
 
+soft link ~/.config/nvim/ultisnips -> ~/.config/coc/ultisnips
+
+```bash
+cd ~/.config/coc && ln -s ~/.config/nvim/ultisnips
+```
+
 ### golang
 
 install go-langserver
