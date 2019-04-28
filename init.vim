@@ -135,7 +135,7 @@ let g:python3_host_prog="/usr/local/bin/python3"
 
 augroup golang
   " this one is which you're most likely to use?
-  autocmd FileType go nnoremap <buffer> <leader>gi :GoImport 
+  autocmd FileType go nnoremap <buffer> <leader>gi :GoImport
 augroup end
 
 
@@ -166,7 +166,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>/ :Ack!<Space>
 nnoremap <leader>m :TagbarToggle<CR>
 nnoremap <leader>q :Bclose<CR>
-nnoremap <leader>gt :Gist 
+nnoremap <leader>gt :Gist
 
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
@@ -436,6 +436,9 @@ let g:user_emmet_settings = {
 " }}}
 
 " StripWhiteSpaces {{{
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_confirm=0
+" let g:strip_whitespace_on_save=1
 autocmd FileType article,vue EnableStripWhitespaceOnSave
 " }}}
 " if hidden not set, TextEdit might fail.
@@ -635,7 +638,7 @@ let g:tagbar_type_css = {
 let g:tex_flavor='latex'
 let g:vimtex_view_method='skim'
 let g:vimtex_quickfix_mode=0
-set conceallevel=1
+set conceallevel=0
 let g:tex_conceal='abdmg'
 let g:Tex_CompileRule_pdf='xelatex -interaction=nonstopmode $*'
 let g:vimtex_compiler_enabled=1
