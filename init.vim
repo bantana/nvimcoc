@@ -24,7 +24,7 @@ Plug 'Shougo/denite.nvim'
 Plug 'morhetz/gruvbox'
 Plug 'mileszs/ack.vim'
 Plug 'mattn/emmet-vim'
-Plug 'tomtom/tcomment_vim'
+Plug 'scrooloose/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf',{'dir': '~/.fzf', 'do': './install --all'}
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
@@ -37,8 +37,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'scrooloose/nerdtree'
 " Plug 'tpope/vim-unimpaired'
-Plug 'ntpeters/vim-better-whitespace'
-" Plug 'gagoar/StripWhiteSpaces'
+" Plug 'ntpeters/vim-better-whitespace'
+Plug 'gagoar/StripWhiteSpaces'
 Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'simnalamburt/vim-mundo'
@@ -436,10 +436,10 @@ let g:user_emmet_settings = {
 " }}}
 
 " StripWhiteSpaces {{{
-let g:better_whitespace_enabled=1
-let g:strip_whitespace_confirm=0
-" let g:strip_whitespace_on_save=1
-autocmd FileType article,vue EnableStripWhitespaceOnSave
+" let g:better_whitespace_enabled=1
+"let g:strip_whitespace_confirm=0
+"let g:strip_whitespace_on_save=1
+" autocmd FileType article,vue EnableStripWhitespaceOnSave
 " }}}
 " if hidden not set, TextEdit might fail.
 set hidden

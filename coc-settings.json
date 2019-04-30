@@ -12,6 +12,10 @@
 
   /* "snippets.ultisnips.enable": true, */
   /* "snippets.ultisnips.directories": ["~/.config/nvim/ultisnips"], */
+  "snippets.extends": {
+    "cpp": ["c"],
+    "typescript": ["javascript"]
+  },
 
   "snippets.ultisnips.directories": ["/Users/bantana/.config/nvim/ultisnips"],
   //  enable update imports on file move, requires watchman installed, default true.
