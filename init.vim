@@ -129,11 +129,10 @@ set formatoptions=qrn1
 set clipboard=unnamed
 " }}}
 " python {{{
-let g:python_host_prog="/usr/local/bin/python"
+"let g:python_host_prog="/usr/local/bin/python"
 let g:python3_host_prog="/usr/local/bin/python3"
 "if has('python3')
   "set pyx=3
-"endif
 "elseif has('python')
   "set pyx=2
 "endif
@@ -194,15 +193,16 @@ if has('nvim')
   augroup END
 endif
 
-" NERDTree {{{
+" Nerdtree {{{
 if exists('g:NERDTree')
-map <leader>n :NERDTreeToggle<cr>
-let NERDTreeIgnore=['node_modules']
-let g:NERDTreeHijackNetrw = 0 "// add this line if you use NERDTree
-" }}}
-" range {{{
-" map <leader>f :Ranger<CR>
-let g:ranger_replace_netrw = 1 "// open ranger when vim open a directory
+  map <leader>n :NERDTreeToggle<cr>
+  let NERDTreeIgnore=['node_modules']
+  " }}}
+  " range {{{
+  " map <leader>f :Ranger<CR>
+  let g:NERDTreeHijackNetrw = 0 "// add this line if you use NERDTree
+  let g:ranger_replace_netrw = 1 "// open ranger when vim open a directory
+endif
 " }}}
 "
 "
