@@ -27,7 +27,7 @@ Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf',{'dir': '~/.fzf', 'do': './install --all'}
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+"Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
 " Plug 'neoclide/npm.nvim', {'do' : 'npm install'}
 " Plug 'SirVer/ultisnips'
@@ -72,7 +72,7 @@ Plug 'rhysd/vim-grammarous'
 Plug 'stephenway/postcss.vim'
 Plug 'iloginow/vim-stylus'
 Plug 'liuchengxu/graphviz.vim'
-Plug 'floobits/floobits-neovim'
+"Plug 'floobits/floobits-neovim'
 Plug 'lervag/vimtex', {'for': ['tex', 'plaintex', 'bst']}
 call plug#end()
 
@@ -129,8 +129,13 @@ set formatoptions=qrn1
 set clipboard=unnamed
 " }}}
 " python {{{
-let g:python_host_prog="/usr/local/bin/python"
+"let g:python_host_prog="/usr/local/bin/python"
 let g:python3_host_prog="/usr/local/bin/python3"
+"if has('python3')
+  "set pyx=3
+"elseif has('python')
+  "set pyx=2
+"endif
 " }}}
 
 augroup golang
@@ -190,6 +195,7 @@ endif
 
 " Nerdtree {{{
 map <leader>n :NERDTreeToggle<cr>
+let NERDTreeIgnore=['node_modules']
 " }}}
 " range {{{
 " map <leader>f :Ranger<CR>
@@ -642,6 +648,7 @@ set conceallevel=0
 let g:tex_conceal='abdmg'
 let g:Tex_CompileRule_pdf='xelatex -interaction=nonstopmode $*'
 let g:vimtex_compiler_enabled=1
+let g:vimtex_compiler_progname='nvr'
 let g:vimtex_view_general_options
     \ = '-reuse-instance -forward-search @tex @line @pdf'
 let g:vimtex_view_general_options_latexmk = '-reuse-instance'
@@ -679,3 +686,4 @@ augroup end
 " set spelllang=en_us
 " autocmd BufRead,BufNewFile *.md setlocal spell
 " autocmd BufRead,BufNewFile *.txt setlocal spell
+"setlocal spell spelllang=en_us

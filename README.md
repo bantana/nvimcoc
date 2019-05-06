@@ -24,7 +24,7 @@ nvim +GoInstallBinaries main.go
 use homebrew
 
 ```bash
-brew install node
+brew install node@10
 ```
 
 or install use nvm
@@ -236,3 +236,9 @@ plugin:
     Plug 'floobits/floobits-neovim'
 
 visit floobits.com to register a account.
+
+## plugins
+
+### universal-ctags
+
+[https://github.com/universal-ctags/ctags](universal-ctags)

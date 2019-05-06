@@ -99,6 +99,6 @@
     //  /* "args": ["-c", "$HOME/.config/efm-langserver/config.yaml"], */
     //  "filetypes": ["vim", "eruby", "markdown"]
     // }
-  },
-  "java.errors.incompleteClasspath.severity": "ignore"
+  }
+  /*"java.errors.incompleteClasspath.severity": "ignore"*/
 }
