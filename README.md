@@ -1,5 +1,48 @@
 # README
 
+## install homebrew
+
+```bash
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+## install node
+
+Use homebrew
+
+```bash
+brew install node@10
+```
+
+~/.bash_profile
+
+```bash
+# npm global reset to user directoy
+if [ -d ~/.npm-global ]; then
+    export PATH=$PATH:~/.npm-global/bin
+    # export NPM_CONFIG_PREFIX=~/.npm-global
+else
+    mkdir ~/.npm-global
+    npm config set prefix '~/.npm-global'
+    npm i -g npm
+    source ~/.bash_profile
+fi
+if [ -d /usr/local/opt/node@10/bin ]; then
+    PATH=$PATH:/usr/local/opt/node@10/bin
+fi
+
+```
+
+Or install use nvm
+
+```bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+nvm ls-remote
+nvm install v10.15.0
+```
+
+## Install neovim and dependence
+
 neovim coc.nvim and vim-go
 
 ```bash
@@ -12,27 +55,13 @@ pip3 list |awk 'NR>2 {print "pip3 install --upgrade --user "$1}'|bash -
 
 pip3 install neovim
 
+brew install node@10
+
 git clone https://github.com/bantana/nvimcoc
 
 nvim  +"CocInstall coc-vetur coc-snippets coc-stylelint coc-css coc-prettier coc-yaml coc-tslint coc-html coc-tsserver coc-eslint coc-emmet coc-json"
 
 nvim +GoInstallBinaries main.go
-```
-
-## install node
-
-use homebrew
-
-```bash
-brew install node@10
-```
-
-or install use nvm
-
-```bash
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
-nvm ls-remote
-nvm install v10.15.0
 ```
 
 ## coc.nvim
@@ -237,8 +266,12 @@ plugin:
 
 visit floobits.com to register a account.
 
-## plugins
-
-### universal-ctags
+## universal-ctags
 
 [https://github.com/universal-ctags/ctags](universal-ctags)
+
+Install:
+
+```bash
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+```
