@@ -28,6 +28,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf',{'dir': '~/.fzf', 'do': './install --all'}
 "Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+"Plug 'neoclide/coc.nvim', {'do': { -> coc#util#build()}}
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
 " Plug 'neoclide/npm.nvim', {'do' : 'npm install'}
 " Plug 'SirVer/ultisnips'
@@ -194,15 +195,13 @@ if has('nvim')
 endif
 
 " Nerdtree {{{
-if exists('g:NERDTree')
-  map <leader>n :NERDTreeToggle<cr>
-  let NERDTreeIgnore=['node_modules']
-  " }}}
-  " range {{{
-  " map <leader>f :Ranger<CR>
-  let g:NERDTreeHijackNetrw = 0 "// add this line if you use NERDTree
-  let g:ranger_replace_netrw = 1 "// open ranger when vim open a directory
-endif
+map <leader>n :NERDTreeToggle<cr>
+let NERDTreeIgnore=['node_modules']
+" }}}
+" range {{{
+" map <leader>f :Ranger<CR>
+let g:NERDTreeHijackNetrw = 0 "// add this line if you use NERDTree
+let g:ranger_replace_netrw = 1 "// open ranger when vim open a directory
 " }}}
 "
 "
@@ -293,6 +292,10 @@ let g:quickrun_config = {
 \    "_" : {
 \        "outputter" : "message",
 \    },
+\    'dart': {
+\       'command': 'dart',
+\       'cmdopt': '--enable-asserts',
+\    }
 \}
 " }}}
 " split naviagation {{{
@@ -405,7 +408,7 @@ let g:go_list_type = "quickfix"
 
 " }}}.
 " Dart-vim-plugin {{{
-" let dart_format_on_save = 1
+let dart_format_on_save = 1
 " }}}
 
 " typescript ctags {{{

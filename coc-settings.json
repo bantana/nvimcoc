@@ -8,7 +8,7 @@
   "prettier.jsxBracketSameLine": false,
   "prettier.arrowParens": "always",
 
-  "java.format.enabled": true,
+  /*"java.format.enabled": true,*/
 
   /* "snippets.ultisnips.enable": true, */
   /* "snippets.ultisnips.directories": ["~/.config/nvim/ultisnips"], */
