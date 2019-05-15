@@ -674,7 +674,8 @@ let g:vimtex_toc_config = {
 " graphviz {{{
 " How to open the generated output file.
 " If does not exist, graphviz.vim will automatically choose the right way depending on the platform.
-let g:graphviz_viewer = 'open'
+"let g:graphviz_viewer = 'open'
+let g:graphviz_viewer = 'skim'
 
 " Default output format. Default is 'pdf'.
 let g:graphviz_output_format = 'pdf'
@@ -683,7 +684,8 @@ let g:graphviz_output_format = 'pdf'
 let g:graphviz_shell_option = ''
 augroup graphviz
   " this one is which you're most likely to use?
-  autocmd FileType dot nnoremap <buffer> <leader>gb :GraphvizCompile<CR> :Graphviz! pdf<CR>
+  "autocmd FileType dot nnoremap <buffer> <leader>gb :GraphvizCompile<CR> :Graphviz! pdf<CR>
+  autocmd FileType dot nnoremap <buffer> <leader>gb :GraphvizCompile<CR>
 augroup end
 " }}}
 " "+++ Spelling +++
