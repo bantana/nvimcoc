@@ -24,7 +24,8 @@ Plug 'Shougo/denite.nvim'
 Plug 'morhetz/gruvbox'
 Plug 'mileszs/ack.vim'
 Plug 'mattn/emmet-vim'
-Plug 'scrooloose/nerdcommenter'
+"Plug 'scrooloose/nerdcommenter'
+Plug 'tomtom/tcomment_vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf',{'dir': '~/.fzf', 'do': './install --all'}
 "Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
@@ -75,6 +76,8 @@ Plug 'iloginow/vim-stylus'
 Plug 'liuchengxu/graphviz.vim'
 "Plug 'floobits/floobits-neovim'
 Plug 'lervag/vimtex', {'for': ['tex', 'plaintex', 'bst']}
+" Plug 'lyokha/vim-xkbswitch'
+Plug 'rlue/vim-barbaric'
 call plug#end()
 
 " Color Scheme {{{
@@ -688,9 +691,26 @@ augroup graphviz
   autocmd FileType dot nnoremap <buffer> <leader>gb :GraphvizCompile<CR>
 augroup end
 " }}}
-" "+++ Spelling +++
+" "+++ Spelling +++ {{{
 " let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
 " set spelllang=en_us
 " autocmd BufRead,BufNewFile *.md setlocal spell
 " autocmd BufRead,BufNewFile *.txt setlocal spell
 "setlocal spell spelllang=en_us
+" }}}
+
+" vim-barbaric {{{
+" install:
+" curl -o /usr/local/bin/xkbswitch https://raw.githubusercontent.com/myshov/xkbswitch-macosx/master/bin/xkbswitch
+" chmod +x /usr/local/bin/xkbswitch
+
+" The input method for Normal mode (as defined by `xkbswitch -g` or `ibus engine`)
+let g:barbaric_default = 0
+
+" The scope where alternate input methods persist (buffer, window, tab, global)
+let g:barbaric_scope = 'buffer'
+
+" Forget alternate input method after n seconds in Normal mode (disabled by default)
+" Useful if you only need IM persistence for short bursts of active work.
+let g:barbaric_timeout = -1
+" }}}
