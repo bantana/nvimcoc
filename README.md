@@ -66,10 +66,12 @@ nvim +GoInstallBinaries main.go
 
 ## coc.nvim
 
-soft link ~/.config/nvim/ultisnips -> ~/.config/coc/ultisnips
+### coc-snippets
+
+ultisnips directoy:
 
 ```bash
-cd ~/.config/coc && ln -s ~/.config/nvim/ultisnips
+cd ~/.config/coc && git clone https://github.com/bantana/ultisnips.git ultisnips
 ```
 
 ### golang

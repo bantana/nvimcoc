@@ -1,9 +1,5 @@
 # personal UltiSnips
 
-```vimscript
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+replace with coc-snippets
 
-let g:UltiSnipsSnippetsDir="~/.config/nvim/ultisnips/"
-nnoremap <leader>es :UltiSnipsEdit<CR>
-```
+see https://github.com/bantana/ultisnips.git
