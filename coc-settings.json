@@ -1,4 +1,34 @@
 {
+  "suggest.triggerAfterInsertEnter": false,
+  "suggest.timeout": 500,
+  "suggest.noselect": true,
+  "suggest.detailField": "abbr",
+  /* "suggest.snippetIndicator": "🌟", */
+  "suggest.triggerCompletionWait": 100,
+  "suggest.echodocSupport": true,
+  "diagnostic.signOffset": 9999999,
+  "diagnostic.errorSign": "X",
+  "diagnostic.warningSign": "W",
+  "diagnostic.displayByAle": false,
+  "diagnostic.refreshOnInsertMode": true,
+  //tslint
+  "tslint.autoFixOnSave": true,
+  //prettier
+  "prettier.eslintIntegration": true,
+  "prettier.tslintIntegration": true,
+  "prettier.stylelintIntegration": true,
+  //emmet
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "javascript": "javascriptreact"
+  },
+  //python
+  "python.autoComplete.addBrackets": true,
+  // eslint
+  "eslint.filetypes": ["javascript", "javascript.jsx", "javascriptreact"],
+  "eslint.autoFix": true,
+  "eslint.autoFixOnSave": true,
+
   "javascript.suggestionActions.enabled": false,
   "coc.preferences.colorSupport": false,
 
@@ -13,34 +43,12 @@
   "java.home": "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home",
   "java.errors.incompleteClasspath.severity": "ignore",
 
-  /* "snippets.ultisnips.enable": true, */
-  /* "snippets.ultisnips.directories": ["~/.config/nvim/ultisnips"], */
+  "snippets.ultisnips.enable": true,
+  "snippets.ultisnips.directories": ["~/.config/coc/ultisnips"],
   "snippets.extends": {
     "cpp": ["c"],
     "typescript": ["javascript"]
   },
-  //  enable update imports on file move, requires watchman installed, default true.
-  /* "javascript.updateImportsOnFileMove.enable": true, */
-  // enable codeLens for implementations, default true
-  /* "javascript.implementationsCodeLens.enable": true, */
-  // enable codeLens for references, default true
-  /* "javascript.referencesCodeLens.enable": true, */
-  // remove semicolons on format for javascript.
-  /* "javascript.preferences.noSemicolons": false, */
-  // quote style of javascript, could be single or double, default "double"
-  /* "javascript.preferences.quoteStyle": "single", */
-  // enable suggestion actions for javascript, default true
-  // javascript validation, default true
-  /* "javascript.validate.enable": true, */
-  // enable javascript completion, default true
-  /* "javascript.suggest.enabled": true, */
-  // enable suggest paths in import statement and require calls, default true
-  /* "javascript.suggest.paths": true, */
-  // enable suggest for auto import, default true
-  /* "javascript.suggest.autoImports": true, */
-  // enable using snippet for method suggestion
-  /* "javascript.suggest.completeFunctionCalls": true, */
-
   "languageserver": {
     "dart": {
       "command": "dart_language_server",
@@ -75,6 +83,13 @@
       "filetypes": ["dockerfile"],
       "args": ["--stdio"]
     },
+    /* // see gopls https://github.com/saibing/tools */
+    /* "golang": { */
+    /*   "command": "gopls", */
+    /*   "args": [], */
+    /*   "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"], */
+    /*   "filetypes": ["go"] */
+    /* }, */
     // go get -u -v github.com/sourcegraph/go-langserver
     "golang": {
       "command": "go-langserver",

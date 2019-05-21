@@ -28,9 +28,12 @@ Plug 'mattn/emmet-vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf',{'dir': '~/.fzf', 'do': './install --all'}
-"Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-"Plug 'neoclide/coc.nvim', {'do': { -> coc#util#build()}}
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
+" Install nightly build, replace ./install.sh with install.cmd on windows
+Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+" " Or install latest release tag
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+" " Or build from source code
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/npm.nvim', {'do' : 'npm install'}
 " Plug 'SirVer/ultisnips'
 Plug 'neoclide/jsonc.vim'
@@ -130,7 +133,24 @@ set formatoptions=qrn1
 " }}}
 " copy {{{
 " pbcopy
-set clipboard=unnamed
+if has('mac')
+	let g:clipboard = {
+		\   'name': 'macOS-clipboard',
+		\   'copy': {
+		\      '+': 'pbcopy',
+		\      '*': 'pbcopy',
+		\    },
+		\   'paste': {
+		\      '+': 'pbpaste',
+		\      '*': 'pbpaste',
+		\   },
+		\   'cache_enabled': 0,
+		\ }
+endif
+
+if has('clipboard')
+	set clipboard& clipboard+=unnamedplus
+endif
 " }}}
 " python {{{
 "let g:python_host_prog="/usr/local/bin/python"
@@ -152,21 +172,6 @@ augroup end
 let mapleader = " "
 let maplocalleader = "\\"
 " }}}
-" Shortcuts for denite interface
-" Show extension list
-" nnoremap <silent> <space>e  :<C-u>Denite coc-extension<cr>
-" " Show symbols of current buffer
-" nnoremap <silent> <space>o  :<C-u>Denite coc-symbols<cr>
-" " Search symbols of current workspace
-" nnoremap <silent> <space>t  :<C-u>Denite coc-workspace<cr>
-" " Show diagnostics of current workspace
-" nnoremap <silent> <space>a  :<C-u>Denite coc-diagnostic<cr>
-" " Show available commands
-" nnoremap <silent> <space>c  :<C-u>Denite coc-command<cr>
-" " Show available services
-" nnoremap <silent> <space>s  :<C-u>Denite coc-service<cr>
-" " Show links of current buffer
-" nnoremap <silent> <space>l  :<C-u>Denite coc-link<cr>
 
 " shutkey {{{
 nnoremap <leader>ev :e ~/.config/nvim/init.vim<CR>
@@ -455,8 +460,14 @@ let g:user_emmet_settings = {
 "let g:strip_whitespace_on_save=1
 " autocmd FileType article,vue EnableStripWhitespaceOnSave
 " }}}
+"
+" coc.nvim {{{
 " if hidden not set, TextEdit might fail.
 set hidden
+
+" " Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
 
 " Better display for messages
 set cmdheight=2
@@ -561,19 +572,6 @@ command! -nargs=0 Format :call CocAction('format')
 " Use `:Fold` for fold current buffer
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-
-" Add diagnostic info for https://github.com/itchyny/lightline.vim
-" let g:lightline = {
-"       \ 'colorscheme': 'wombat',
-"       \ 'active': {
-"       \   'left': [ [ 'mode', 'paste' ],
-"       \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-"       \ },
-"       \ 'component_function': {
-"       \   'cocstatus': 'coc#status'
-"       \ },
-"       \ }
-
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
@@ -584,7 +582,7 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head'
       \ },
       \ }
-" }}}
+" }}} end coc.nvim
 
 
 " Using CocList {{{
