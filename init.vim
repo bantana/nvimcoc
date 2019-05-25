@@ -205,6 +205,7 @@ endif
 " Nerdtree {{{
 map <leader>n :NERDTreeToggle<cr>
 let NERDTreeIgnore=['node_modules']
+autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
 " }}}
 " range {{{
 " map <leader>f :Ranger<CR>
