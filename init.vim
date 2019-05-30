@@ -34,8 +34,6 @@ Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 " " Or build from source code
 " Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/npm.nvim', {'do' : 'npm install'}
-" Plug 'SirVer/ultisnips'
 Plug 'neoclide/jsonc.vim'
 Plug 'honza/vim-snippets'
 Plug 'terryma/vim-multiple-cursors'
@@ -81,6 +79,8 @@ Plug 'liuchengxu/graphviz.vim'
 Plug 'lervag/vimtex', {'for': ['tex', 'plaintex', 'bst']}
 " Plug 'lyokha/vim-xkbswitch'
 Plug 'rlue/vim-barbaric'
+" Plug 'sheerun/vim-polyglot'
+Plug 'https://gn.googlesource.com/gn', { 'rtp': 'tools/gn/misc/vim' }
 call plug#end()
 
 " Color Scheme {{{
@@ -205,7 +205,7 @@ endif
 " Nerdtree {{{
 map <leader>n :NERDTreeToggle<cr>
 let NERDTreeIgnore=['node_modules']
-autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
+" autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
 " }}}
 " range {{{
 " map <leader>f :Ranger<CR>
@@ -229,9 +229,9 @@ let g:ale_fixers = {
 " let g:ale_javascript_prettier_standard_executable = '/usr/local/bin/prettier-standard'
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_standard_use_global=1
-
-let g:ale_java_google_java_format_executable = "/usr/local/bin/google-java-format"
-let g:ale_fixers = { 'java': ['google_java_format']}
+"
+" let g:ale_java_google_java_format_executable = "/usr/local/bin/google-java-format"
+" let g:ale_fixers = { 'java': ['google_java_format']}
 
 " max line length that prettier will wrap on
 " Prettier default: 80
@@ -316,6 +316,43 @@ nnoremap <C-H> <C-W><C-H>
 " Command for fzf {{{
 nnoremap <C-p> :<C-u>FZF<CR>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+" floating windows
+" 让输入上方，搜索列表在下方
+let $FZF_DEFAULT_OPTS = '--layout=reverse'
+
+" 打开 fzf 的方式选择 floating window
+let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
+
+function! OpenFloatingWin()
+  let height = &lines - 3
+  let width = float2nr(&columns - (&columns * 2 / 10))
+  let col = float2nr((&columns - width) / 2)
+
+  " 设置浮动窗口打开的位置，大小等。
+  " 这里的大小配置可能不是那么的 flexible 有继续改进的空间
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': height * 0.3,
+        \ 'col': col + 30,
+        \ 'width': width * 2 / 3,
+        \ 'height': height / 2
+        \ }
+
+  let buf = nvim_create_buf(v:false, v:true)
+  let win = nvim_open_win(buf, v:true, opts)
+
+  " 设置浮动窗口高亮
+  call setwinvar(win, '&winhl', 'Normal:Pmenu')
+
+  setlocal
+        \ buftype=nofile
+        \ nobuflisted
+        \ bufhidden=hide
+        \ nonumber
+        \ norelativenumber
+        \ signcolumn=no
+endfunction
 " }}}
 " Command for shortkey {{{
 inoremap jj <ESC>
