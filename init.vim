@@ -725,11 +725,16 @@ augroup graphviz
 augroup end
 " }}}
 " "+++ Spelling +++ {{{
-" let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
-" set spelllang=en_us
-" autocmd BufRead,BufNewFile *.md setlocal spell
-" autocmd BufRead,BufNewFile *.txt setlocal spell
-"setlocal spell spelllang=en_us
+let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
+set spelllang=en_us
+setlocal spell spelllang=en_us
+set spellfile=~/.config/nvim/spell/en.utf-8.add
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.txt setlocal spell
+autocmd BufRead,BufNewFile *.article setlocal spell
+
+autocmd FileType gitcommit setlocal spell
+set complete+=kspell
 " }}}
 
 " vim-barbaric {{{
