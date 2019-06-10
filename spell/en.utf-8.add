@@ -1,13 +1,7 @@
-toolchains
-#antana
-#antana
 b@aozsky.com
 Bantana
+toolchains
+rustup
 neovim
 env
-CocInstall
-coc
-mkdir
-cd
-rustup
-#ttps
+rustocean
