@@ -14,6 +14,12 @@ Use homebrew
 brew install node@10
 ```
 
+On ubuntu:
+
+```bash
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+```
+
 ~/.bash_profile
 
 ```bash
@@ -277,3 +283,32 @@ Install:
 ```bash
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 ```
+
+## rust
+
+install rust:
+
+```bash
+curl https://sh.rustup.rs -sSf | sh
+```
+
+```~/.bash_profile
+
+# rust bin
+
+if [[ -f "$HOME/.cargo/env" ]]; then
+source "\$HOME/.cargo/env"
+fi
+
+# Bash (macOS/Homebrew)
+
+# $ rustup completions bash > $(brew --prefix)/etc/bash_completion.d/rustup.bash-completion
+
+````
+
+[https://github.com/rust-lang/rls](see https://github.com/rust-lang/rls)
+
+```bash
+rustup update
+rustup component add rls rust-analysis rust-src
+````

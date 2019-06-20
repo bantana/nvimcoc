@@ -106,24 +106,36 @@
       "args": ["start"],
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
+    },
+    //  /*// brew install php*/
+    //  /*// CocInstall coc-phpls*/
+    //  /*"intelephense": {*/
+    //  /*"command": "intelephense",*/
+    //  /*"args": ["--stdio"],*/
+    //  /*"filetypes": ["php"],*/
+    //  /*"initializationOptions": {*/
+    //  /*"storagePath": "/tmp/intelephense"*/
+    //  /*}*/
+    //  /*}*/
+    //  // go get -u -v github.com/mattn/efm-langserver/cmd/efm-langserver
+    //  // "efm": {
+    //  //  "command": "efm-langserver",
+    //  //  "args": [],
+    //  //  // custom config path
+    //  //  /* "args": ["-c", "$HOME/.config/efm-langserver/config.yaml"], */
+    //  //  "filetypes": ["vim", "eruby", "markdown"]
+    //  // }
+
+    // julia langage server
+    "julia": {
+      "command": "/usr/local/bin/julia",
+      "args": [
+        "--startup-file=no",
+        "--history-file=no",
+        "-e",
+        "using LanguageServer; using Pkg; import StaticLint; import SymbolServer; env_path = dirname(Pkg.Types.Context().env.project_file); debug = false; server = LanguageServer.LanguageServerInstance(stdin, stdout, debug, env_path, \"\", Dict()); server.runlinter = true; run(server);"
+      ],
+      "filetypes": ["julia"]
     }
-    /*// brew install php*/
-    /*// CocInstall coc-phpls*/
-    /*"intelephense": {*/
-    /*"command": "intelephense",*/
-    /*"args": ["--stdio"],*/
-    /*"filetypes": ["php"],*/
-    /*"initializationOptions": {*/
-    /*"storagePath": "/tmp/intelephense"*/
-    /*}*/
-    /*}*/
-    // go get -u -v github.com/mattn/efm-langserver/cmd/efm-langserver
-    // "efm": {
-    //  "command": "efm-langserver",
-    //  "args": [],
-    //  // custom config path
-    //  /* "args": ["-c", "$HOME/.config/efm-langserver/config.yaml"], */
-    //  "filetypes": ["vim", "eruby", "markdown"]
-    // }
   }
 }

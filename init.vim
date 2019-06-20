@@ -79,9 +79,10 @@ Plug 'liuchengxu/graphviz.vim'
 Plug 'lervag/vimtex', {'for': ['tex', 'plaintex', 'bst']}
 " Plug 'lyokha/vim-xkbswitch'
 Plug 'rlue/vim-barbaric'
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 Plug 'https://gn.googlesource.com/gn', { 'rtp': 'tools/gn/misc/vim' }
 Plug 'rust-lang/rust.vim'
+" Plug 'JuliaEditorSupport/julia-vim'
 call plug#end()
 
 " Color Scheme {{{
@@ -773,10 +774,11 @@ nmap <leader>b :call Zoom()<CR>
 " rust {{{
 let g:rust_fold = 1
 let g:rustfmt_command = 'rustfmt'
-let g:rustfmt_autosave = 1
 let g:rustfmt_fail_silently = 0
+let g:rustfmt_autosave = 1
 if has('mac')
   let g:rust_clip_command = 'pbcopy'
   " let g:rust_clip_command = 'xclip -selection clipboard' // linux
 endif
 " }}}
+let g:netrw_scp_cmd="scp -q -P 22"
