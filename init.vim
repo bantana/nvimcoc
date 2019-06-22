@@ -58,7 +58,6 @@ Plug 'w0rp/ale'
 "   \ 'do': 'yarn install',
 "   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'vue', 'yaml', 'html'] }
 "
-
 Plug 'posva/vim-vue'
 Plug 'albanm/vuetify-vim'
 Plug 'travisjeffery/vim-auto-mkdir'
@@ -83,6 +82,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'https://gn.googlesource.com/gn', { 'rtp': 'tools/gn/misc/vim' }
 Plug 'rust-lang/rust.vim'
 " Plug 'JuliaEditorSupport/julia-vim'
+Plug 'tracyone/fzf-funky',{'on': 'CtrlPFunky'}
 call plug#end()
 
 " Color Scheme {{{
@@ -210,7 +210,7 @@ let NERDTreeIgnore=['node_modules']
 " autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
 " }}}
 " range {{{
-" map <leader>f :Ranger<CR>
+map <leader>rg :Ranger<CR>
 let g:NERDTreeHijackNetrw = 0 "// add this line if you use NERDTree
 let g:ranger_replace_netrw = 1 "// open ranger when vim open a directory
 " }}}
@@ -782,3 +782,9 @@ if has('mac')
 endif
 " }}}
 let g:netrw_scp_cmd="scp -q -P 22"
+" fzf-funky {{{
+let g:ctrlp_funky_syntax_highlight = 1
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+" }}}
