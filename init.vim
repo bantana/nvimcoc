@@ -86,8 +86,8 @@ Plug 'tracyone/fzf-funky',{'on': 'CtrlPFunky'}
 call plug#end()
 
 " Color Scheme {{{
-" set termguicolors
 set t_Co=256
+" set termguicolors
 set background=dark
 hi Search term=reverse cterm=reverse gui=reverse ctermfg=237
 colorscheme gruvbox

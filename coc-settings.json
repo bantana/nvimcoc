@@ -74,7 +74,20 @@
         ".hg/"
       ],
       "initializationOptions": {
-        "cacheDirectory": "/tmp/ccls"
+        "cache": {
+          "directory": "/tmp/ccls"
+        },
+        // "cacheDirectory": "/tmp/ccls"
+        "clang": {
+          // make sure you have installed commandLineTools
+          "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0",
+          "extraArgs": [
+            "-isystem",
+            "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+            "-I",
+            "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/"
+          ]
+        }
       }
     },
     // yarn global add dockerfile-language-server-nodejs
