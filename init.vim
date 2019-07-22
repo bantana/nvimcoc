@@ -221,7 +221,7 @@ let g:ranger_replace_netrw = 1 "// open ranger when vim open a directory
 " ale always {{{
 let g:ale_sign_column_always=1
 let g:ale_linters_explicit = 1
-let g:ale_linters = {'javascript': [''],'go': ['gometalinter']}
+let g:ale_linters = {'javascript': ['']}
 let g:ale_fixers = {
   \ 'html': ['prettier'],
   \ 'css' : ['stylelint', 'prettier'],
@@ -420,31 +420,6 @@ let g:mundo_preview_statusline = "mundo preview"
 " }}}
 
 " vim-go ----------------------------------- {{{
-" let g:go_auto_type_info=1
-" let g:go_fmt_autosave = 1
-" let g:go_fmt_command = "goimports"
-" let g:go_goimports_bin = "goimports -tabs=false -tabwidth=4"
-" let g:go_fmt_fail_silently = 1
-" let g:go_fmt_experimental = 1
-" let g:go_doc_keywordprg_enabled = 1
-" let g:go_bin_path = expand("~/bin")
-" let g:go_bin_path = $HOME."/bin"
-" let g:go_highlight_array_whitespace_error = 1
-" let g:go_highlight_chan_whitespace_error = 1
-" let g:go_highlight_extra_types = 1
-" let g:go_highlight_space_tab_error = 1
-" let g:go_highlight_trailing_whitespace_error = 1
-" let g:go_highlight_operators = 1
-" let g:go_highlight_functions = 1
-" let g:go_highlight_methods = 1
-" let g:go_highlight_structs = 1
-" let g:go_highlight_build_constraints = 1
-" let g:go_snippet_engine = "ultisnips"
-" let g:go_gocode_propose_source=0
-"
-" let g:go_metalinter_autosave = 1
-"let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-"let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 " shortkey
 " au FileType go nmap <Leader>s <Plug>(go-implements)
 
@@ -677,17 +652,17 @@ let g:grammarous#default_comments_only_filetypes = {
             \ '*' : 1, 'help' : 0, 'markdown' : 0,
             \ }
 " }}}
-" rivive {{{
-" go get -u -v github.com/mgechev/revive
-call ale#linter#Define('go', {
-\   'name': 'revive',
-\   'output_stream': 'both',
-\   'executable': 'revive',
-\   'read_buffer': 0,
-\   'command': 'revive %t',
-\   'callback': 'ale#handlers#unix#HandleAsWarning',
-\})
-" }}}
+" " rivive {{{
+" " go get -u -v github.com/mgechev/revive
+" call ale#linter#Define('go', {
+" \   'name': 'revive',
+" \   'output_stream': 'both',
+" \   'executable': 'revive',
+" \   'read_buffer': 0,
+" \   'command': 'revive %t',
+" \   'callback': 'ale#handlers#unix#HandleAsWarning',
+" \})
+" " }}}
 " google-java-format {{{
 " autocmd FileType java AutoFormatBuffer google-java-format
 " }}}
