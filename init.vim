@@ -76,13 +76,14 @@ Plug 'iloginow/vim-stylus'
 Plug 'liuchengxu/graphviz.vim'
 "Plug 'floobits/floobits-neovim'
 Plug 'lervag/vimtex', {'for': ['tex', 'plaintex', 'bst']}
-" Plug 'lyokha/vim-xkbswitch'
+Plug 'lyokha/vim-xkbswitch'
 Plug 'rlue/vim-barbaric'
 Plug 'sheerun/vim-polyglot'
 Plug 'https://gn.googlesource.com/gn', { 'rtp': 'tools/gn/misc/vim' }
 Plug 'rust-lang/rust.vim'
 " Plug 'JuliaEditorSupport/julia-vim'
 Plug 'tracyone/fzf-funky',{'on': 'CtrlPFunky'}
+Plug 'liuchengxu/vista.vim'
 call plug#end()
 
 " Color Scheme {{{
@@ -167,6 +168,7 @@ let g:python3_host_prog="/usr/local/bin/python3"
 augroup golang
   " this one is which you're most likely to use?
   autocmd FileType go nnoremap <buffer> <leader>gi :GoImport
+  autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 augroup end
 
 
@@ -418,29 +420,29 @@ let g:mundo_preview_statusline = "mundo preview"
 " }}}
 
 " vim-go ----------------------------------- {{{
-let g:go_auto_type_info=1
-let g:go_fmt_autosave = 1
-let g:go_fmt_command = "goimports"
-let g:go_goimports_bin = "goimports -tabs=false -tabwidth=4"
-let g:go_fmt_fail_silently = 1
-let g:go_fmt_experimental = 1
-let g:go_doc_keywordprg_enabled = 1
+" let g:go_auto_type_info=1
+" let g:go_fmt_autosave = 1
+" let g:go_fmt_command = "goimports"
+" let g:go_goimports_bin = "goimports -tabs=false -tabwidth=4"
+" let g:go_fmt_fail_silently = 1
+" let g:go_fmt_experimental = 1
+" let g:go_doc_keywordprg_enabled = 1
 " let g:go_bin_path = expand("~/bin")
-let g:go_bin_path = $HOME."/bin"
-let g:go_highlight_array_whitespace_error = 1
-let g:go_highlight_chan_whitespace_error = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_space_tab_error = 1
-let g:go_highlight_trailing_whitespace_error = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_build_constraints = 1
-let g:go_snippet_engine = "ultisnips"
-let g:go_gocode_propose_source=0
-
-let g:go_metalinter_autosave = 1
+" let g:go_bin_path = $HOME."/bin"
+" let g:go_highlight_array_whitespace_error = 1
+" let g:go_highlight_chan_whitespace_error = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_space_tab_error = 1
+" let g:go_highlight_trailing_whitespace_error = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_structs = 1
+" let g:go_highlight_build_constraints = 1
+" let g:go_snippet_engine = "ultisnips"
+" let g:go_gocode_propose_source=0
+"
+" let g:go_metalinter_autosave = 1
 "let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 "let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 " shortkey
@@ -609,6 +611,24 @@ command! -nargs=0 Format :call CocAction('format')
 " Use `:Fold` for fold current buffer
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
+" vista.vim {{{
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
+" }}}
+
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
@@ -616,7 +636,8 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
+      \   'gitbranch': 'fugitive#head',
+      \   'method': 'NearestMethodOrFunction'
       \ },
       \ }
 " }}} end coc.nvim

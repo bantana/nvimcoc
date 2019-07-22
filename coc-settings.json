@@ -95,23 +95,23 @@
       "filetypes": ["dockerfile"],
       "args": ["--stdio"]
     },
-    /* // see gopls https://github.com/saibing/tools */
-    /* "golang": { */
-    /*   "command": "gopls", */
-    /*   "args": [], */
-    /*   "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"], */
-    /*   "filetypes": ["go"] */
-    /* }, */
-    // go get -u -v github.com/sourcegraph/go-langserver
+    // see gopls https://github.com/saibing/tools */
     "golang": {
-      "command": "go-langserver",
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "gocodeCompletionEnabled": true,
-        "diagnosticsEnabled": true,
-        "lintTool": "golint"
-      }
+      "command": "gopls",
+      "args": [],
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
     },
+    // // go get -u -v github.com/sourcegraph/go-langserver
+    // "golang": {
+    //   "command": "go-langserver",
+    //   "filetypes": ["go"],
+    //   "initializationOptions": {
+    //     "gocodeCompletionEnabled": true,
+    //     "diagnosticsEnabled": true,
+    //     "lintTool": "golint"
+    //   }
+    // },
     // yarn global add bash-language-server
     "bash": {
       "command": "bash-language-server",
