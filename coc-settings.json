@@ -3,7 +3,6 @@
   "suggest.timeout": 500,
   "suggest.noselect": true,
   "suggest.detailField": "abbr",
-  /* "suggest.snippetIndicator": "🌟", */
   "suggest.triggerCompletionWait": 100,
   "suggest.echodocSupport": true,
   "diagnostic.signOffset": 9999999,
@@ -11,20 +10,15 @@
   "diagnostic.warningSign": "⚠",
   "diagnostic.displayByAle": false,
   "diagnostic.refreshOnInsertMode": true,
-  //tslint
   "tslint.autoFixOnSave": true,
-  //prettier
   "prettier.eslintIntegration": true,
   "prettier.tslintIntegration": true,
   "prettier.stylelintIntegration": true,
-  //emmet
   "emmet.includeLanguages": {
     "vue-html": "html",
     "javascript": "javascriptreact"
   },
-  //python
   "python.autoComplete.addBrackets": true,
-  // eslint
   "eslint.filetypes": ["javascript", "javascript.jsx", "javascriptreact"],
   "eslint.autoFix": true,
   "eslint.autoFixOnSave": true,
@@ -39,7 +33,6 @@
   "prettier.arrowParens": "always",
 
   "java.format.enabled": true,
-  /* "java.home": "/Library/Java/JavaVirtualMachines/jdk-12.0.1.jdk/Contents/Home", */
   "java.home": "/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home",
   "java.errors.incompleteClasspath.severity": "ignore",
 
@@ -102,16 +95,6 @@
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
     },
-    // // go get -u -v github.com/sourcegraph/go-langserver
-    // "golang": {
-    //   "command": "go-langserver",
-    //   "filetypes": ["go"],
-    //   "initializationOptions": {
-    //     "gocodeCompletionEnabled": true,
-    //     "diagnosticsEnabled": true,
-    //     "lintTool": "golint"
-    //   }
-    // },
     // yarn global add bash-language-server
     "bash": {
       "command": "bash-language-server",
@@ -119,26 +102,6 @@
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
     },
-    //  /*// brew install php*/
-    //  /*// CocInstall coc-phpls*/
-    //  /*"intelephense": {*/
-    //  /*"command": "intelephense",*/
-    //  /*"args": ["--stdio"],*/
-    //  /*"filetypes": ["php"],*/
-    //  /*"initializationOptions": {*/
-    //  /*"storagePath": "/tmp/intelephense"*/
-    //  /*}*/
-    //  /*}*/
-    //  // go get -u -v github.com/mattn/efm-langserver/cmd/efm-langserver
-    //  // "efm": {
-    //  //  "command": "efm-langserver",
-    //  //  "args": [],
-    //  //  // custom config path
-    //  //  /* "args": ["-c", "$HOME/.config/efm-langserver/config.yaml"], */
-    //  //  "filetypes": ["vim", "eruby", "markdown"]
-    //  // }
-
-    // julia langage server
     "julia": {
       "command": "/usr/local/bin/julia",
       "args": [
