@@ -1,4 +1,5 @@
 {
+  "translator.engines": ["google", "bing", "ciba"],
   "suggest.triggerAfterInsertEnter": false,
   "suggest.timeout": 500,
   "suggest.noselect": true,
@@ -88,13 +89,13 @@
       "filetypes": ["dockerfile"],
       "args": ["--stdio"]
     },
-    // see gopls https://github.com/saibing/tools */
-    "golang": {
-      "command": "gopls",
-      "args": [],
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"]
-    },
+    // // see gopls https://github.com/saibing/tools */
+    // "golang": {
+    //   "command": "gopls",
+    //   "args": [],
+    //   "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+    //   "filetypes": ["go"]
+    // },
     // yarn global add bash-language-server
     "bash": {
       "command": "bash-language-server",

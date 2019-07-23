@@ -167,7 +167,7 @@ let g:python3_host_prog="/usr/local/bin/python3"
 
 augroup golang
   " this one is which you're most likely to use?
-  autocmd FileType go nnoremap <buffer> <leader>gi :GoImport
+  autocmd FileType go nnoremap <buffer> <leader>gi :GoImport<space>
   autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 augroup end
 
@@ -420,6 +420,30 @@ let g:mundo_preview_statusline = "mundo preview"
 " }}}
 
 " vim-go ----------------------------------- {{{
+" let g:go_auto_type_info=1
+" let g:go_fmt_autosave = 1
+" let g:go_fmt_command = "goimports"
+" let g:go_goimports_bin = "goimports -tabs=false -tabwidth=4"
+" let g:go_fmt_fail_silently = 1
+" let g:go_fmt_experimental = 1
+" let g:go_doc_keywordprg_enabled = 1
+" let g:go_bin_path = $HOME."/bin"
+" let g:go_highlight_array_whitespace_error = 1
+" let g:go_highlight_chan_whitespace_error = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_space_tab_error = 1
+" let g:go_highlight_trailing_whitespace_error = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_structs = 1
+" let g:go_highlight_build_constraints = 1
+" let g:go_snippet_engine = "ultisnips"
+" let g:go_gocode_propose_source=0
+"
+let g:go_metalinter_autosave = 1
+"let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+"let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 " shortkey
 " au FileType go nmap <Leader>s <Plug>(go-implements)
 
@@ -783,4 +807,7 @@ let g:ctrlp_funky_syntax_highlight = 1
 nnoremap <Leader>fu :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+" }}}
+" coc-translator {{{
+nmap <Leader>t <Plug>(coc-translator-p)
 " }}}
